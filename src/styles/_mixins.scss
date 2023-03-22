@@ -1,0 +1,4 @@
+@mixin setFont($weight) {
+    font-weight: $weight;
+    font-family: "Ubuntu", sans-serif;
+}

@@ -1,0 +1,63 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+.sectionForm {
+    flex: 2.2 4 0;
+    height: 100%;
+
+    .divTitleForm {
+        padding-top: 52px;
+        padding-left: 100px;
+        padding-right: 100px;
+        width: 100%;
+        h1 {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        span {
+            @include mixins.setFont(300);
+            font-size: 16px;
+            color: $fontColorGray;
+        }
+    }
+    .formCont {
+        padding-top: 10px;
+        padding-left: 100px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 40px;
+        div {
+            label {
+                @include mixins.setFont(500);
+                color: $fontColorBlue;
+            }
+            input {
+                margin-top: 12px;
+                width: 99%;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-radius: 10px;
+                border: 1px solid $fontColorGray;
+            }
+            input::placeholder {
+                padding-left: 10px;
+                @include mixins.setFont(500);
+                font-size: 15px;
+                color: $fontColorGray;
+            }
+            input:focus {
+                outline: none;
+            }
+        }
+        .divBtn {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 45px;
+        }
+        // }
+    }
+}

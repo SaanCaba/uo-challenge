@@ -1,0 +1,42 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+.sectionSelectPlan {
+    flex: 2.2 4 0;
+    .divTitlePlan {
+        padding-top: 52px;
+        padding-left: 100px;
+        padding-right: 100px;
+        width: 100%;
+        margin-bottom: 30px;
+        h1 {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        span {
+            @include mixins.setFont(300);
+            font-size: 16px;
+            color: $fontColorGray;
+        }
+    }
+    .divSelectPlan {
+        padding-left: 100px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 480px;
+        .divPlans {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .divBtns {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

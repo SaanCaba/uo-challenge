@@ -1,0 +1,14 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
+.btnNextStep {
+    background-color: $fontColorBlue;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    @include mixins.setFont(500);
+}

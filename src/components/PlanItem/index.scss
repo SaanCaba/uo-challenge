@@ -1,0 +1,39 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+.divPlanCont {
+    width: 100%;
+    height: 230px;
+    border: 1px solid $fontColorGray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .divIcon {
+        padding-left: 15px;
+    }
+    .divCharacteristics {
+        padding-left: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .planType {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 19px;
+        }
+        .planPrice {
+            @include mixins.setFont(300);
+            font-size: 15px;
+            color: $fontColorGray;
+        }
+        .planMonths {
+            @include mixins.setFont(300);
+            color: $fontColorBlue;
+            font-size: 15px;
+        }
+    }
+}
+.planSelected {
+    border: 1px solid $purpleColor;
+}
