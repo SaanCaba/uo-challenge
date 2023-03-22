@@ -3,12 +3,24 @@
 
 .sectionAddOns {
     flex: 2.2 4 0;
+    @include mixins.contStepsMobile();
+    @include mixins.media-up(lg) {
+        position: unset !important;
+        top: 0px;
+        margin: 0px;
+        height: 100%;
+        border-radius: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
     .divTitle {
-        padding-top: 52px;
-        padding-left: 100px;
-        padding-right: 100px;
-        width: 100%;
         margin-bottom: 30px;
+        @include mixins.media-up(lg) {
+            padding-top: 52px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
         h1 {
             @include mixins.setFont(700);
             color: $fontColorBlue;
@@ -22,22 +34,46 @@
         }
     }
     .divContentAddons {
-        padding-left: 100px;
-        padding-right: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 480px;
+        height: min-content;
+        @include mixins.media-up(lg) {
+            padding-left: 100px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 480px;
+        }
         .divAddonContainer {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
         .divBtns {
-            margin-bottom: 15px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
+            display: none;
+            @include mixins.media-up(lg) {
+                margin-bottom: 15px;
+                width: 100%;
+                display: flex !important;
+                justify-content: space-between;
+            }
         }
+    }
+}
+.divBtnsMobile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    button {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    @include mixins.media-up(lg) {
+        display: none;
     }
 }

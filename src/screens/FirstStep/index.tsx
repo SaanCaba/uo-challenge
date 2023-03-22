@@ -50,6 +50,11 @@ const FirstStep = (): JSX.Element => {
                     </div>
                 </form>
             </section>
+            <div className="divBtnMobile">
+                <Link to="/second_step">
+                    <NextStepBtn type="submit" />
+                </Link>
+            </div>
         </MainContainer>
     );
 };

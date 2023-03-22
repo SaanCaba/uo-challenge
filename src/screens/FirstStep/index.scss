@@ -2,13 +2,24 @@
 @import "src/styles/variables.scss";
 .sectionForm {
     flex: 2.2 4 0;
-    height: 100%;
-
+    @include mixins.contStepsMobile();
+    @include mixins.media-up(lg) {
+        position: unset !important;
+        top: 0px;
+        margin: 0px;
+        height: 100%;
+        border-radius: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
     .divTitleForm {
-        padding-top: 52px;
-        padding-left: 100px;
-        padding-right: 100px;
-        margin-bottom: 30px;
+        @include mixins.media-up(lg) {
+            padding-top: 52px;
+            padding-left: 100px;
+            padding-right: 100px;
+            margin-bottom: 30px;
+        }
 
         width: 100%;
         h1 {
@@ -24,27 +35,42 @@
         }
     }
     .formCont {
-        padding-left: 100px;
-        padding-right: 80px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 480px;
+        height: min-content;
+        @include mixins.media-up(lg) {
+            padding-left: 100px;
+            padding-right: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 480px;
+            padding-bottom: 0px;
+        }
         .contInputFields {
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 15px;
+            @include mixins.media-up(lg) {
+                display: flex;
+                flex-direction: column;
+                gap: 35px;
+            }
             div {
                 label {
-                    @include mixins.setFont(500);
+                    @include mixins.setFont(300);
                     color: $fontColorBlue;
                 }
+                &:first-child {
+                    margin-top: 20px;
+                }
                 input {
-                    margin-top: 12px;
+                    margin-top: 4px;
                     width: 99%;
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                    border-radius: 10px;
+                    padding-top: 14px;
+                    padding-bottom: 14px;
+                    border-radius: 5px;
                     border: 1px solid $fontColorGray;
                 }
                 input::placeholder {
@@ -56,14 +82,47 @@
                 input:focus {
                     outline: none;
                 }
+                @include mixins.media-up(lg) {
+                    label {
+                        @include mixins.setFont(500);
+                        color: $fontColorBlue;
+                    }
+                    input {
+                        margin-top: 12px;
+                        padding-top: 20px;
+                        padding-bottom: 20px;
+                    }
+                }
             }
         }
         .divBtn {
-            width: 100%;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: flex-end;
+            display: none;
+            @include mixins.media-up(lg) {
+                background-color: transparent;
+                width: 100%;
+                margin-bottom: 15px;
+                display: flex !important;
+                justify-content: flex-end;
+            }
         }
         // }
+    }
+}
+
+.divBtnMobile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+
+    @include mixins.media-up(lg) {
+        display: none;
+    }
+    button {
+        margin-right: 20px;
     }
 }

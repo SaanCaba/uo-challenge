@@ -37,6 +37,12 @@ const SecondStep = (): JSX.Element => {
                     </div>
                 </div>
             </section>
+            <div className="divBtnsMobile">
+                <GoBackBtn />
+                <Link to={"/third_step"}>
+                    <NextStepBtn />
+                </Link>
+            </div>
         </MainContainer>
     );
 };

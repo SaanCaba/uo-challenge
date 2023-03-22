@@ -2,13 +2,23 @@
 @import "src/styles/variables.scss";
 .divPlanCont {
     width: 100%;
-    height: 230px;
+    height: min-content;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border: 1px solid $fontColorGray;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
+    @include mixins.media-up(lg) {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        width: 100%;
+        height: 230px;
+        border: 1px solid $fontColorGray;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
     .divIcon {
         padding-left: 15px;
     }

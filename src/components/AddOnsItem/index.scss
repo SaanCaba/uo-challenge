@@ -4,8 +4,16 @@
     border: 1px solid $purpleColor;
     height: 70px;
     display: flex;
+    gap: 10px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
+    @include mixins.media-up(lg) {
+        border: 1px solid $purpleColor;
+        display: flex;
+        border-radius: 10px;
+        gap: 0px;
+        padding: 10px;
+    }
     .divCheckbox {
         width: 15%;
         display: flex;
@@ -30,6 +38,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        gap: 3px;
         .divContInfo {
             display: flex;
             flex-direction: column;
@@ -38,19 +47,35 @@
             span {
                 @include mixins.setFont(700);
                 color: $fontColorBlue;
+                font-size: 15px;
+                @include mixins.media-up(lg) {
+                    font-size: 18px;
+                }
                 &:last-child {
                     @include mixins.setFont(300);
                     color: $fontColorGray;
-                    font-size: 15px;
+                    font-size: 13px;
+                    @include mixins.media-up(lg) {
+                        font-size: 15px;
+                    }
                 }
             }
         }
         .divContPrice {
             display: flex;
             align-items: center;
-            margin-right: 20px;
             color: $purpleColor;
             @include mixins.setFont(300);
+            margin-right: 10px;
+            font-size: 15px;
+            @include mixins.media-up(lg) {
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+                font-size: 18px;
+                color: $purpleColor;
+                @include mixins.setFont(300);
+            }
         }
     }
 }
