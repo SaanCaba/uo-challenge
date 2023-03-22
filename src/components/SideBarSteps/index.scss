@@ -2,22 +2,40 @@
 @import "src/styles/variables.scss";
 
 .sectionSideBarSteps {
-    flex: 1 4 0;
-
     background-image: url(/project_steps/assets/images/bg-sidebar-desktop.svg);
-    background-repeat: no-repeat;
+    background-position-y: 200px;
+    border-radius: 0px;
     background-size: cover;
-    border-radius: 10px;
+    @include mixins.media-up(lg) {
+        flex: 1 4 0;
+        background-image: url(/project_steps/assets/images/bg-sidebar-desktop.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 10px;
+    }
+
     menu {
         display: flex;
         align-items: flex-start;
-        justify-content: flex-start;
-        margin-top: 40px;
-        margin-left: 40px;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 100px;
+        @include mixins.media-up(lg) {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 40px;
+            margin-left: 40px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
         ol {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            @include mixins.media-up(lg) {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
             .liSteps {
                 display: flex;
                 list-style: none;
@@ -44,16 +62,19 @@
                     background-color: $currentStepColor;
                 }
                 .descStep {
-                    display: flex;
-                    flex-direction: column;
-                    @include mixins.setFont(700);
-                    color: white;
-                    gap: 5px;
-                    span {
-                        &:first-child {
-                            @include mixins.setFont(300);
-                            font-size: small;
-                            color: rgb(209, 209, 209);
+                    display: none;
+                    @include mixins.media-up(lg) {
+                        display: flex;
+                        flex-direction: column;
+                        @include mixins.setFont(700);
+                        color: white;
+                        gap: 5px;
+                        span {
+                            &:first-child {
+                                @include mixins.setFont(300);
+                                font-size: small;
+                                color: rgb(209, 209, 209);
+                            }
                         }
                     }
                 }

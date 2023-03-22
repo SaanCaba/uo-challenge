@@ -1,0 +1,10 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+.gobackBtn {
+    border: none;
+    color: $fontColorGray;
+    background-color: transparent;
+    @include mixins.setFont(500);
+    font-size: 15px;
+    cursor: pointer;
+}

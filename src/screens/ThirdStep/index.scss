@@ -1,3 +1,43 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+
 .sectionAddOns {
     flex: 2.2 4 0;
+    .divTitle {
+        padding-top: 52px;
+        padding-left: 100px;
+        padding-right: 100px;
+        width: 100%;
+        margin-bottom: 30px;
+        h1 {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        span {
+            @include mixins.setFont(300);
+            font-size: 16px;
+            color: $fontColorGray;
+        }
+    }
+    .divContentAddons {
+        padding-left: 100px;
+        padding-right: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 480px;
+        .divAddonContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .divBtns {
+            margin-bottom: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }

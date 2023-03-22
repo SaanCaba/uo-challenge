@@ -19,21 +19,30 @@ const FirstStep = (): JSX.Element => {
                     </span>
                 </div>
                 <form className="formCont">
-                    <div>
-                        <label>Name</label>
-                        <input placeholder="e.g. Stephen King" type="text" />
+                    <div className="contInputFields">
+                        <div>
+                            <label>Name</label>
+                            <input
+                                placeholder="e.g. Stephen King"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <label>Email Address</label>
+                            <input
+                                placeholder="e.g. stepthenking@lorem.com"
+                                type="text"
+                            />
+                        </div>
+                        <div>
+                            <label>Phone Number</label>
+                            <input
+                                placeholder="e.g. +1 234 567 890"
+                                type="text"
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <label>Email Address</label>
-                        <input
-                            placeholder="e.g. stepthenking@lorem.com"
-                            type="text"
-                        />
-                    </div>
-                    <div>
-                        <label>Phone Number</label>
-                        <input placeholder="e.g. +1 234 567 890" type="text" />
-                    </div>
+
                     <div className="divBtn">
                         <Link to="/second_step">
                             <NextStepBtn type="submit" />

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import GoBackBtn from "../../components/GoBackBtn";
 import ArcadeIcon from "../../components/Icons/Arcade";
 import MainContainer from "../../components/MainContainer";
 import NextStepBtn from "../../components/NextStepBtn";
@@ -18,7 +20,7 @@ const SecondStep = (): JSX.Element => {
                 <div className="divTitlePlan">
                     <h1>Select your plan</h1>
                     <span>
-                        You have the option of monthlu or yearly billing
+                        You have the option of monthly or yearly billing
                     </span>
                 </div>
                 <div className="divSelectPlan">
@@ -28,8 +30,10 @@ const SecondStep = (): JSX.Element => {
                         })}
                     </div>
                     <div className="divBtns">
-                        <button>Go Back</button>
-                        <NextStepBtn />
+                        <GoBackBtn />
+                        <Link to={"/third_step"}>
+                            <NextStepBtn />
+                        </Link>
                     </div>
                 </div>
             </section>

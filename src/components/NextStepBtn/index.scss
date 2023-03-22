@@ -11,4 +11,5 @@
     padding-bottom: 15px;
     cursor: pointer;
     @include mixins.setFont(500);
+    font-size: 15px;
 }
