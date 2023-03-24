@@ -42,16 +42,16 @@ export function ContextProvider({ children }: Props): React.ReactElement {
         setStep2(plan);
     };
 
-    const addAddon = (addon: AddOns) => {
+    const addAddon = (addon: AddOns): void => {
         setStep3((val) => [...val, addon]);
     };
 
-    const deleteAddon = (id: number) => {
+    const deleteAddon = (id: number): void => {
         let filterAddons = addons.filter((el) => el.id !== id);
         setStep3(filterAddons);
     };
 
-    const getAllPacks = () => {
+    const getAllPacks = (): AllPacksContext[] => {
         const packs: Plans[] = JSON.parse(
             localStorage.getItem("plans") as string
         );
@@ -86,13 +86,13 @@ export function ContextProvider({ children }: Props): React.ReactElement {
         return allSelectedPacks;
     };
 
-    const getTotalPrice = () => {
-        const allPacks = getAllPacks();
+    const getTotalPrice = (): number => {
+        const allPacks: AllPacksContext[] = getAllPacks();
         let total = allPacks.reduce((a, v) => a + v.price, 0);
         return total;
     };
 
-    const setValidateUser = (val: boolean) => {
+    const setValidateUser = (val: boolean): void => {
         setValidated(val);
         localStorage.setItem("validated", val.toString());
     };

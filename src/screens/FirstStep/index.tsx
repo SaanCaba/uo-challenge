@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import MainContainer from "../../components/MainContainer";
 import NextStepBtn from "../../components/NextStepBtn";
 import SideBarSteps from "../../components/SideBarSteps";
 import { useForm } from "react-hook-form";
-import "./index.scss";
 import { useContextApp } from "../../appContext/appContext";
+
+import "./index.scss";
 
 const FirstStep = (): JSX.Element => {
     const {
@@ -13,8 +14,8 @@ const FirstStep = (): JSX.Element => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+
     const { validated, setValidateUser } = useContextApp();
-    console.log(validated);
 
     const navigate = useNavigate();
     const onSubmit = () => {

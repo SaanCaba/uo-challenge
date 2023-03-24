@@ -12,8 +12,8 @@ import "./index.scss";
 const FourthStep = (): JSX.Element => {
     const { getAllPacks, getTotalPrice, setValidateUser } = useContextApp();
     const [allPacks] = useState<AllPacksContext[] | null>(getAllPacks());
-    const [price] = useState(getTotalPrice());
-    const [confirm, setConfirm] = useState(false);
+    const [price] = useState<number | null>(getTotalPrice());
+    const [confirm, setConfirm] = useState<boolean>(false);
     const navigate = useNavigate();
     const onConfirm = () => {
         setConfirm(true);
