@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useContextApp } from "../../appContext/appContext";
 
 import "./index.scss";
 
 interface Props {
     currentStep: number;
+    toConfirm?: boolean;
 }
 
-const SideBarSteps = ({ currentStep }: Props) => {
+const SideBarSteps = ({ currentStep, toConfirm }: Props) => {
+    const { validated } = useContextApp();
+
     return (
         <section className="sectionSideBarSteps">
             <menu>
                 <ol>
-                    <li className="liSteps">
+                    <li
+                        className={
+                            toConfirm || !validated
+                                ? "liSteps toConfirm"
+                                : "liSteps"
+                        }
+                    >
                         <Link
                             className={
                                 currentStep === 1
@@ -21,7 +31,12 @@ const SideBarSteps = ({ currentStep }: Props) => {
                             }
                             to="/first_step"
                         >
-                            1
+                            <span>1</span>
+                            <div
+                                className={
+                                    currentStep === 1 ? "bgCurrentStep" : ""
+                                }
+                            ></div>
                         </Link>
                         <div className="descStep">
                             <span>STEP 1</span>
@@ -29,7 +44,13 @@ const SideBarSteps = ({ currentStep }: Props) => {
                         </div>
                     </li>
 
-                    <li className="liSteps">
+                    <li
+                        className={
+                            toConfirm || !validated
+                                ? "liSteps toConfirm"
+                                : "liSteps"
+                        }
+                    >
                         <Link
                             className={
                                 currentStep === 2
@@ -38,7 +59,12 @@ const SideBarSteps = ({ currentStep }: Props) => {
                             }
                             to="/second_step"
                         >
-                            2
+                            <span>2</span>
+                            <div
+                                className={
+                                    currentStep === 2 ? "bgCurrentStep" : ""
+                                }
+                            ></div>
                         </Link>
 
                         <div className="descStep">
@@ -47,7 +73,13 @@ const SideBarSteps = ({ currentStep }: Props) => {
                         </div>
                     </li>
 
-                    <li className="liSteps">
+                    <li
+                        className={
+                            toConfirm || !validated
+                                ? "liSteps toConfirm"
+                                : "liSteps"
+                        }
+                    >
                         <Link
                             className={
                                 currentStep === 3
@@ -56,7 +88,12 @@ const SideBarSteps = ({ currentStep }: Props) => {
                             }
                             to="/third_step"
                         >
-                            3
+                            <span>3</span>
+                            <div
+                                className={
+                                    currentStep === 3 ? "bgCurrentStep" : ""
+                                }
+                            ></div>
                         </Link>
 
                         <div className="descStep">
@@ -65,7 +102,13 @@ const SideBarSteps = ({ currentStep }: Props) => {
                         </div>
                     </li>
 
-                    <li className="liSteps">
+                    <li
+                        className={
+                            toConfirm || !validated
+                                ? "liSteps toConfirm"
+                                : "liSteps"
+                        }
+                    >
                         <Link
                             className={
                                 currentStep === 4
@@ -74,7 +117,12 @@ const SideBarSteps = ({ currentStep }: Props) => {
                             }
                             to="/fourth_step"
                         >
-                            4
+                            <span>4</span>
+                            <div
+                                className={
+                                    currentStep === 4 ? "bgCurrentStep" : ""
+                                }
+                            ></div>
                         </Link>
 
                         <div className="descStep">

@@ -10,7 +10,8 @@ export interface StateContext{
     deleteAddon:(id:number) => void
     getAllPacks:() => AllPacksContext[] | null
     getTotalPrice:() => number | null
-
+    validated:boolean
+    setValidateUser:(val:boolean) => void
 }
 
 export interface StateAppContext{

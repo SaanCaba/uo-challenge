@@ -60,7 +60,27 @@
                 }
                 .currentStep {
                     border: 1px solid transparent;
-                    background-color: $currentStepColor;
+                    position: relative;
+                    overflow: hidden;
+                    span {
+                        z-index: 10;
+                    }
+                    .bgCurrentStep {
+                        background-color: $currentStepColor;
+                        animation: renderCurrentStep 1s ease-in-out;
+                        height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        z-index: 1;
+                    }
+                }
+                @keyframes renderCurrentStep {
+                    0% {
+                        transform: translateY(100%);
+                    }
+                    100% {
+                        transform: translateY(0%);
+                    }
                 }
                 .descStep {
                     display: none;
@@ -79,6 +99,11 @@
                         }
                     }
                 }
+            }
+            .toConfirm {
+                pointer-events: none;
+
+                opacity: 0.7;
             }
         }
     }

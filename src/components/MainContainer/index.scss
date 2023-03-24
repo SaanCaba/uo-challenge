@@ -2,7 +2,6 @@
 @import "src/styles/variables.scss";
 
 .mainContainer {
-    position: relative;
     @include mixins.media-up(lg) {
         display: flex;
         align-items: center;
@@ -15,7 +14,7 @@
         display: flex;
         flex-direction: column;
         background-color: white;
-
+        overflow: hidden;
         @include mixins.media-up(lg) {
             display: flex;
             flex-direction: unset;

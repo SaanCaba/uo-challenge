@@ -1,0 +1,90 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
+.sectionAlert {
+    flex: 2.2 4 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: renderAlertMobile 1.3s ease;
+    @include mixins.contStepsMobile();
+    @include mixins.media-up(lg) {
+        position: unset !important;
+        top: 0px;
+        margin: 0px;
+        height: 100%;
+        border-radius: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        animation: renderAlertDesktop 1.3s ease;
+    }
+    .divIconTitle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding-top: 70px;
+        padding-bottom: 20px;
+        @include mixins.media-up(lg) {
+            padding-top: 0px;
+            padding-left: 100px;
+            padding-right: 100px;
+            padding-bottom: 0px;
+            gap: 28px;
+        }
+        svg {
+            scale: 0.8;
+            @include mixins.media-up(lg) {
+                scale: 1;
+            }
+        }
+        h1 {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 26px;
+            @include mixins.media-up(lg) {
+                font-size: 30px;
+            }
+        }
+    }
+    .divContP {
+        padding-bottom: 70px;
+        @include mixins.media-up(lg) {
+            padding-top: 32px;
+            padding-left: 100px;
+            padding-bottom: 0px;
+            padding-right: 100px;
+        }
+        p {
+            padding-left: 5px;
+            padding-right: 5px;
+            @include mixins.setFont(300);
+            color: $fontColorGray;
+            text-align: center;
+            line-height: 25px;
+            font-size: 17px;
+            @include mixins.media-up(lg) {
+                font-size: 17px;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+    }
+}
+
+@keyframes renderAlertDesktop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes renderAlertMobile {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

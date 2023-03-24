@@ -7,4 +7,9 @@
     @include mixins.setFont(500);
     font-size: 15px;
     cursor: pointer;
+    transition: 1s linear;
+}
+
+.gobackBtn:hover {
+    color: gray;
 }

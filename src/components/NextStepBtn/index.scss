@@ -12,4 +12,9 @@
     cursor: pointer;
     @include mixins.setFont(500);
     font-size: 15px;
+    transition: 1s linear;
+}
+
+.btnNextStep:hover {
+    background-color: hsl(213, 93%, 30%);
 }

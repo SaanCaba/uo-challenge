@@ -12,6 +12,10 @@ function App() {
                 <Route path="/second_step" element={<SecondStep />} />
                 <Route path="/third_step" element={<ThirdStep />} />
                 <Route path="/fourth_step" element={<FourthStep />} />
+                <Route
+                    path="*"
+                    element={<Navigate to="/first_step" replace />}
+                />
             </Routes>
         </>
     );

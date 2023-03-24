@@ -8,7 +8,6 @@ interface Props {
 }
 
 function PlanItem({ plan, handleChangePlan }: Props) {
-    console.log(plan.icon);
     return (
         <div
             className={

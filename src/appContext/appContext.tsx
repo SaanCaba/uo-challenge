@@ -20,6 +20,8 @@ export const ContextApp = createContext<StateContext>({
     getTotalPrice() {
         return null;
     },
+    validated: false,
+    setValidateUser: () => {},
 });
 
 export const useContextApp = (): StateContext => {
@@ -34,6 +36,7 @@ interface Props {
 export function ContextProvider({ children }: Props): React.ReactElement {
     const [plan, setStep2] = useState<null | Plans>(null);
     const [addons, setStep3] = useState<AddOns[]>([]);
+    const [validated, setValidated] = useState<boolean>(false);
 
     const addPlan = (plan: Plans): void => {
         setStep2(plan);
@@ -41,7 +44,6 @@ export function ContextProvider({ children }: Props): React.ReactElement {
 
     const addAddon = (addon: AddOns) => {
         setStep3((val) => [...val, addon]);
-        console.log(addons);
     };
 
     const deleteAddon = (id: number) => {
@@ -60,6 +62,16 @@ export function ContextProvider({ children }: Props): React.ReactElement {
             const defaultPlans: Plans[] = dataPlans.filter(
                 (plan) => plan.selected
             );
+            if (addons !== null) {
+                const selectedAddons = addons?.filter(
+                    (addon) => addon.selected
+                );
+                const allSelectedPacks: AllPacksContext[] = [
+                    ...defaultPlans,
+                    ...selectedAddons,
+                ];
+                return allSelectedPacks;
+            }
             return defaultPlans;
         }
         const selectedPlans = packs.filter((plan) => plan.selected);
@@ -76,10 +88,22 @@ export function ContextProvider({ children }: Props): React.ReactElement {
 
     const getTotalPrice = () => {
         const allPacks = getAllPacks();
-        console.log(allPacks);
         let total = allPacks.reduce((a, v) => a + v.price, 0);
         return total;
     };
+
+    const setValidateUser = (val: boolean) => {
+        setValidated(val);
+        localStorage.setItem("validated", val.toString());
+    };
+
+    useEffect(() => {
+        if (localStorage.getItem("validated") !== null) {
+            setValidated(
+                JSON.parse(localStorage.getItem("validated") as string)
+            );
+        }
+    }, []);
 
     return (
         <ContextApp.Provider
@@ -91,6 +115,8 @@ export function ContextProvider({ children }: Props): React.ReactElement {
                 deleteAddon,
                 getAllPacks,
                 getTotalPrice,
+                validated,
+                setValidateUser,
             }}
         >
             {children}

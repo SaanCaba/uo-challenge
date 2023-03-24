@@ -19,6 +19,7 @@
             padding-top: 52px;
             padding-left: 100px;
             padding-right: 100px;
+            margin-bottom: 10px;
         }
         h1 {
             @include mixins.setFont(700);
@@ -39,6 +40,7 @@
             padding-right: 80px;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
         .divPacks {
             background-color: $backgroundViewport;
@@ -100,11 +102,13 @@
             display: none;
             @include mixins.media-up(lg) {
                 margin-bottom: 15px;
-                width: 100%;
                 display: flex !important;
+                align-items: flex-end;
+                width: 100%;
                 justify-content: space-between;
-                margin-top: 82px;
+                margin-top: 75px;
             }
+
             .confirmBtn {
                 background-color: $purpleColor;
                 border: none;
@@ -116,6 +120,10 @@
                 cursor: pointer;
                 @include mixins.setFont(500);
                 font-size: 15px;
+                transition: 1s linear;
+            }
+            .confirmBtn:hover {
+                background-color: hsl(243, 63%, 48%);
             }
         }
     }
@@ -130,6 +138,9 @@
     display: flex;
     justify-content: space-between;
     background-color: white;
+    @include mixins.media-up(lg) {
+        display: none;
+    }
     button {
         margin-right: 20px;
         margin-left: 20px;
@@ -145,8 +156,5 @@
         cursor: pointer;
         @include mixins.setFont(500);
         font-size: 15px;
-    }
-    @include mixins.media-up(lg) {
-        display: none;
     }
 }
