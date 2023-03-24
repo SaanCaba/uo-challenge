@@ -1,21 +1,23 @@
-import React from "react";
 import { Plans } from "../../models/plans.models";
 
 import "./index.scss";
 
 interface Props {
     plan: Plans;
+    handleChangePlan: (id: number) => void;
 }
 
-const PlanItem = ({ plan }: Props) => {
+function PlanItem({ plan, handleChangePlan }: Props) {
+    console.log(plan.icon);
     return (
         <div
             className={
                 plan.selected ? "divPlanCont planSelected" : "divPlanCont"
             }
+            onClick={() => handleChangePlan(plan.id)}
         >
             <div className="divIcon">
-                <plan.icon />
+                <img src={plan.icon} />
             </div>
             <div className="divCharacteristics">
                 <span className="planType">{plan.type}</span>
@@ -24,6 +26,6 @@ const PlanItem = ({ plan }: Props) => {
             </div>
         </div>
     );
-};
+}
 
 export default PlanItem;

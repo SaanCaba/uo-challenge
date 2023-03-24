@@ -8,6 +8,7 @@
     border: 1px solid $fontColorGray;
     border-radius: 10px;
     display: flex;
+    cursor: pointer;
     @include mixins.media-up(lg) {
         padding-top: 0px;
         padding-bottom: 0px;

@@ -1,3 +1,97 @@
+@use "src/styles/mixins.scss";
+@import "src/styles/variables.scss";
 .sectionSummary {
     flex: 2.2 4 0;
+    @include mixins.contStepsMobile();
+    @include mixins.media-up(lg) {
+        position: unset !important;
+        top: 0px;
+        margin: 0px;
+        height: 100%;
+        border-radius: 0px;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .divTitle {
+        margin-bottom: 30px;
+        @include mixins.media-up(lg) {
+            padding-top: 52px;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+        h1 {
+            @include mixins.setFont(700);
+            color: $fontColorBlue;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+        span {
+            @include mixins.setFont(300);
+            font-size: 16px;
+            color: $fontColorGray;
+        }
+    }
+    .divContAllPacks {
+        @include mixins.media-up(lg) {
+            padding-top: 32px;
+            padding-left: 100px;
+            padding-right: 100px;
+            display: flex;
+            flex-direction: column;
+        }
+        .divPacks {
+            background-color: $backgroundViewport;
+            border-radius: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            div {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                margin-top: 15px;
+                span {
+                    &:first-child {
+                        @include mixins.setFont(300);
+                        color: $fontColorGray;
+                    }
+                    @include mixins.setFont(500);
+                    color: $fontColorBlue;
+                }
+                &:first-child {
+                    margin-top: 0px;
+                    padding-top: 30px;
+                    padding-bottom: 50px;
+                    border-bottom: 1px solid $fontColorGray;
+                    span {
+                        &:first-child::after {
+                            content: "(Yearly)";
+                        }
+                        @include mixins.setFont(500);
+                        color: $fontColorBlue;
+                    }
+                }
+            }
+        }
+        .divPrice {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            span {
+                @include mixins.setFont(300);
+                color: $fontColorGray;
+                &:last-child {
+                    font-size: 20px;
+                    @include mixins.setFont(700);
+                    color: $purpleColor;
+                }
+            }
+        }
+    }
 }

@@ -1,12 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MainContainer from "../../components/MainContainer";
 import NextStepBtn from "../../components/NextStepBtn";
 import SideBarSteps from "../../components/SideBarSteps";
-
+import { useForm } from "react-hook-form";
 import "./index.scss";
 
 const FirstStep = (): JSX.Element => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const navigate = useNavigate();
+    const onSubmit = () => {
+        if (Object.entries(errors).length === 0) {
+            navigate("/second_step");
+        }
+    };
     return (
         <MainContainer>
             <SideBarSteps currentStep={1} />
@@ -18,42 +29,86 @@ const FirstStep = (): JSX.Element => {
                         number.
                     </span>
                 </div>
-                <form className="formCont">
+                <form onSubmit={handleSubmit(onSubmit)} className="formCont">
                     <div className="contInputFields">
                         <div>
                             <label>Name</label>
+                            <span className="errorMessage">
+                                <>{errors.name && errors.name.message}</>
+                            </span>
                             <input
+                                className={
+                                    errors.name && errors.name.message
+                                        ? "inputError"
+                                        : ""
+                                }
                                 placeholder="e.g. Stephen King"
-                                type="text"
+                                {...register("name", {
+                                    required: "Required",
+                                    pattern: {
+                                        value: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g,
+                                        message: "Invalid name",
+                                    },
+                                })}
                             />
                         </div>
                         <div>
                             <label>Email Address</label>
+                            <span className="errorMessage">
+                                <>{errors.email && errors.email.message}</>
+                            </span>
                             <input
+                                className={
+                                    errors.email && errors.email.message
+                                        ? "inputError"
+                                        : ""
+                                }
                                 placeholder="e.g. stepthenking@lorem.com"
-                                type="text"
+                                type="email"
+                                {...register("email", {
+                                    required: "Required",
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: "Invalid email",
+                                    },
+                                })}
                             />
                         </div>
                         <div>
                             <label>Phone Number</label>
+                            <span className="errorMessage">
+                                <>
+                                    {errors.phoneNumber &&
+                                        errors.phoneNumber.message}
+                                </>
+                            </span>
                             <input
-                                placeholder="e.g. +1 234 567 890"
+                                className={
+                                    errors.phoneNumber &&
+                                    errors.phoneNumber.message
+                                        ? "inputError"
+                                        : ""
+                                }
+                                placeholder="e.g. 1234567890"
                                 type="text"
+                                {...register("phoneNumber", {
+                                    required: "Required",
+                                    pattern: {
+                                        value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/i,
+                                        message: "Invalid phone number",
+                                    },
+                                })}
                             />
                         </div>
                     </div>
 
                     <div className="divBtn">
-                        <Link to="/second_step">
-                            <NextStepBtn type="submit" />
-                        </Link>
+                        <NextStepBtn type="submit" />
                     </div>
                 </form>
             </section>
             <div className="divBtnMobile">
-                <Link to="/second_step">
-                    <NextStepBtn type="submit" />
-                </Link>
+                <NextStepBtn onClick={handleSubmit(onSubmit)} type="submit" />
             </div>
         </MainContainer>
     );

@@ -3,4 +3,5 @@ export interface AddOns{
     desc:string,
     price:number,
     selected:boolean
+    id:number
 }

@@ -2,6 +2,7 @@
 @import "src/styles/variables.scss";
 
 .mainContainer {
+    position: re;
     @include mixins.media-up(lg) {
         display: flex;
         align-items: center;

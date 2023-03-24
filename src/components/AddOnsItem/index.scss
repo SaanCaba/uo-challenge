@@ -1,16 +1,13 @@
 @use "src/styles/mixins.scss";
 @import "src/styles/variables.scss";
 .contAddonItem {
-    border: 1px solid $purpleColor;
     height: 70px;
+    border: 1px solid $fontColorGray;
     display: flex;
     gap: 10px;
     border-radius: 10px;
     padding: 5px;
     @include mixins.media-up(lg) {
-        border: 1px solid $purpleColor;
-        display: flex;
-        border-radius: 10px;
         gap: 0px;
         padding: 10px;
     }
@@ -78,4 +75,8 @@
             }
         }
     }
+}
+
+.contAddonItemChecked {
+    border: 1px solid $purpleColor;
 }

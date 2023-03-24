@@ -1,27 +1,27 @@
-import AdvancedIcon from "../components/Icons/Advanced";
-import ArcadeIcon from "../components/Icons/Arcade";
-import VideogamesIcon from "../components/Icons/Videogames";
+import advancedIcon from "../assets/icon-advanced.png";
+import arcadeIcon from "../assets/icon-arcade.png";
+import videogamesIcon from "../assets/icon-pro.png";
 import { Plans } from "../models/plans.models";
 
 export const dataPlans : Plans[]= [
     {
         type:'Arcade',
         price:90,
-        icon:ArcadeIcon,
+        icon:arcadeIcon,
         selected:true,
         id:1
     },
     {
         type:'Advanced',
-        price:90,
-        icon:AdvancedIcon,
+        price:120,
+        icon:advancedIcon,
         selected:false,
         id:2
     },
     {
         type:'Pro',
-        price:90,
-        icon:VideogamesIcon,
+        price:150,
+        icon:videogamesIcon,
         selected:false,
         id:3
     }

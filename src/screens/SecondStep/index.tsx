@@ -1,18 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useContextApp } from "../../appContext/appContext";
 import GoBackBtn from "../../components/GoBackBtn";
-import ArcadeIcon from "../../components/Icons/Arcade";
 import MainContainer from "../../components/MainContainer";
 import NextStepBtn from "../../components/NextStepBtn";
-import PlanItem from "../../components/PlanItem";
-import SideBarSteps from "../../components/SideBarSteps";
+import PlanItem from "../../components/PlanItem/index";
+import SideBarSteps from "../../components/SideBarSteps/index";
 import { dataPlans } from "../../data/dataPlan";
-import { Plans } from "../../models/plans.models";
+import { type Plans } from "../../models/plans.models";
 
 import "./index.scss";
 
-const SecondStep = (): JSX.Element => {
-    const [plans, setPlans] = useState<Plans[]>(dataPlans);
+function SecondStep(): JSX.Element {
+    const [plansState, setPlans] = useState<Plans[]>([]);
+    const { addPlan } = useContextApp();
+
+    useEffect(() => {
+        if (localStorage.getItem("plans") !== null) {
+            const plans: null | string = localStorage.getItem("plans");
+            if (plans !== null) {
+                const plansParsed: Plans[] = JSON.parse(plans);
+                setPlans(plansParsed);
+            }
+        } else {
+            setPlans(dataPlans);
+        }
+    }, []);
+
+    const handleChangePlan = (id: number): void => {
+        const mappedPlans = plansState
+            .map((el) => {
+                return {
+                    ...el,
+                    selected: false,
+                };
+            })
+            .map((el) => {
+                if (el.id === id) {
+                    addPlan(el);
+                    return {
+                        ...el,
+                        selected: true,
+                    };
+                } else {
+                    return {
+                        ...el,
+                        selected: el.selected,
+                    };
+                }
+            });
+        setPlans(mappedPlans);
+        localStorage.setItem("plans", JSON.stringify(mappedPlans));
+    };
     return (
         <MainContainer>
             <SideBarSteps currentStep={2} />
@@ -25,8 +64,14 @@ const SecondStep = (): JSX.Element => {
                 </div>
                 <div className="divSelectPlan">
                     <div className="divPlans">
-                        {plans.map((plan) => {
-                            return <PlanItem plan={plan} />;
+                        {plansState.map((plan) => {
+                            return (
+                                <PlanItem
+                                    handleChangePlan={handleChangePlan}
+                                    key={plan.id}
+                                    plan={plan}
+                                />
+                            );
                         })}
                     </div>
                     <div className="divBtns">
@@ -45,6 +90,6 @@ const SecondStep = (): JSX.Element => {
             </div>
         </MainContainer>
     );
-};
+}
 
 export default SecondStep;
