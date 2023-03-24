@@ -1,5 +1,5 @@
 export interface Plans{
-    icon:any
+    icon?:any
     type:string
     price:number
     selected:boolean

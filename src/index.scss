@@ -103,7 +103,6 @@ body {
     background-color: $backgroundViewport;
     @include mixins.media-up(lg) {
         background-color: white;
-        overflow: scroll;
     }
 }
 

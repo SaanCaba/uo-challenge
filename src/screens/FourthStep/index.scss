@@ -36,7 +36,7 @@
         @include mixins.media-up(lg) {
             padding-top: 32px;
             padding-left: 100px;
-            padding-right: 100px;
+            padding-right: 80px;
             display: flex;
             flex-direction: column;
         }
@@ -82,7 +82,10 @@
             padding-left: 30px;
             padding-right: 30px;
             padding-top: 20px;
-            padding-bottom: 30px;
+            padding-bottom: 10px;
+            @include mixins.media-up(lg) {
+                padding-bottom: 30px;
+            }
             span {
                 @include mixins.setFont(300);
                 color: $fontColorGray;
@@ -93,5 +96,57 @@
                 }
             }
         }
+        .divBtns {
+            display: none;
+            @include mixins.media-up(lg) {
+                margin-bottom: 15px;
+                width: 100%;
+                display: flex !important;
+                justify-content: space-between;
+                margin-top: 82px;
+            }
+            .confirmBtn {
+                background-color: $purpleColor;
+                border: none;
+                color: white;
+                border-radius: 10px;
+                width: 100px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                cursor: pointer;
+                @include mixins.setFont(500);
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.divMobileBtns {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    button {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .confirmBtn {
+        background-color: $purpleColor;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        width: 100px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        cursor: pointer;
+        @include mixins.setFont(500);
+        font-size: 15px;
+    }
+    @include mixins.media-up(lg) {
+        display: none;
     }
 }

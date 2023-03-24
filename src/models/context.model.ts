@@ -3,7 +3,7 @@ import { AddOns } from "./addons.model";
 import { Plans } from "./plans.models";
 
 export interface StateContext{
-    plans: Plans | null,
+    plan: Plans | null,
     addons: AddOns[] | null
     addPlan: (plan:Plans) => void 
     addAddon:(addon:AddOns) => void

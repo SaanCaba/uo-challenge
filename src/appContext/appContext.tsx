@@ -1,15 +1,22 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { dataPlans } from "../data/dataPlan";
 import { AddOns } from "../models/addons.model";
-import { StateAppContext, StateContext } from "../models/context.model";
+import {
+    AllPacksContext,
+    StateAppContext,
+    StateContext,
+} from "../models/context.model";
 import { Plans } from "../models/plans.models";
 
 export const ContextApp = createContext<StateContext>({
-    plans: null,
+    plan: null,
     addons: null,
     addPlan() {},
     addAddon() {},
     deleteAddon() {},
-    getAllPacks() {},
+    getAllPacks() {
+        return null;
+    },
     getTotalPrice() {
         return null;
     },
@@ -25,7 +32,7 @@ interface Props {
 }
 
 export function ContextProvider({ children }: Props): React.ReactElement {
-    const [plans, setStep2] = useState<null | Plans>(null);
+    const [plan, setStep2] = useState<null | Plans>(null);
     const [addons, setStep3] = useState<AddOns[]>([]);
 
     const addPlan = (plan: Plans): void => {
@@ -49,22 +56,35 @@ export function ContextProvider({ children }: Props): React.ReactElement {
         const addons: AddOns[] = JSON.parse(
             localStorage.getItem("addons") as string
         );
-        const selectedPlans: any = packs.filter((plan) => plan.selected);
-        const selectedAddons = addons.filter((addon) => addon.selected);
-        const allSelectedPacks = selectedPlans.concat(selectedAddons);
+        if (packs === null) {
+            const defaultPlans: Plans[] = dataPlans.filter(
+                (plan) => plan.selected
+            );
+            return defaultPlans;
+        }
+        const selectedPlans = packs.filter((plan) => plan.selected);
+        const selectedAddons = addons?.filter((addon) => addon.selected);
+        if (selectedAddons === undefined) {
+            return selectedPlans;
+        }
+        const allSelectedPacks: AllPacksContext[] = [
+            ...selectedPlans,
+            ...selectedAddons,
+        ];
         return allSelectedPacks;
     };
 
     const getTotalPrice = () => {
         const allPacks = getAllPacks();
-        let total = allPacks.reduce((a: any, v: any) => a + v.price, 0);
+        console.log(allPacks);
+        let total = allPacks.reduce((a, v) => a + v.price, 0);
         return total;
     };
 
     return (
         <ContextApp.Provider
             value={{
-                plans,
+                plan,
                 addons,
                 addPlan,
                 addAddon,

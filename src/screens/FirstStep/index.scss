@@ -42,9 +42,6 @@
         @include mixins.media-up(lg) {
             padding-left: 100px;
             padding-right: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             height: 480px;
             padding-bottom: 0px;
         }
