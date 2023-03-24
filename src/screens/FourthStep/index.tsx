@@ -68,13 +68,14 @@ const FourthStep = (): JSX.Element => {
                     </div>
                 </section>
             )}
-
-            <div className="divMobileBtns">
-                <GoBackBtn />
-                <button onClick={() => onConfirm()} className="confirmBtn">
-                    Confirm
-                </button>
-            </div>
+            {!confirm && (
+                <div className="divMobileBtns">
+                    <GoBackBtn />
+                    <button onClick={() => onConfirm()} className="confirmBtn">
+                        Confirm
+                    </button>
+                </div>
+            )}
         </MainContainer>
     );
 };
